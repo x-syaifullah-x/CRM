@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="Theme.Application" parent="Theme.AppCompat.Light">
+        <!-- Status bar color. -->
+        <item name="colorPrimaryDark">?android:colorBackground</item>
+        <!-- Status bar color. -->
+    </style>
+
+    <style name="Theme.Application.NoActionBar" parent="Theme.Application">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/img</item>
+        <item name="android:statusBarColor">@color/lightBackground</item>
+    </style>
+</resources>

@@ -1,0 +1,64 @@
+name: android
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "oracle"
+
+      - name: Replace org.gradle.jvmargs
+        run: |
+          ORG_GRADLE_JVM=`cat gradle.properties | grep org.gradle.jvmargs`
+          sed -i 's/'"${ORG_GRADLE_JVM}"'/org.gradle.jvmargs=-Xmx8192m -Dfile.encoding=UTF-8/g' gradle.properties
+          cat gradle.properties | grep org.gradle.jvmargs
+
+      - name: Chmod gradlew
+        run: chmod +x gradlew
+
+      #      - name: Gradle dependencies
+      #        run: ./gradlew dependencies
+
+      #      - name: Gradle build
+      #        run: ./gradlew clean build
+
+      #      - name: upload outputs
+      #        uses: actions/upload-artifact@v4
+      #        with:
+      #          name: outputs
+      #          path: app/build/outputs
+
+      #      - name: Gradle assembleDebug
+      #        run: ./gradlew assembleDebug
+
+      #      - name: upload apk debug
+      #        uses: actions/upload-artifact@v4
+      #        with:
+      #          name: apk-debug
+      #          path: app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Assemble release
+        run: ./gradlew clean assembleRelease
+
+      - name: Upload apk release
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk-release
+          path: app/build/outputs/apk/release/app-release.apk
+
+#      - name: Gradle bundleRelease
+#        run: ./gradlew bundleRelease
+
+#      - name: upload aab
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: aab-release
+#          path: app/build/outputs/bundle/release/app-release.aab

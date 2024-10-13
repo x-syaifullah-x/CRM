@@ -1,0 +1,127 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "com.google.devtools.ksp"
+}
+
+android {
+
+    String packageName = build_versions.application_id
+    namespace packageName
+    testNamespace "${packageName}.test"
+
+    compileSdk build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
+        versionCode build_versions.code
+        versionName build_versions.name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        resConfigs "en"
+    }
+
+    signingConfigs {
+        debug {
+            def store_file_release = file("$rootDir/key_store/debug/debug.jks")
+            storeFile store_file_release
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+
+        release {
+            def store_file_release = file("$rootDir/key_store/debug/debug.jks")
+            storeFile store_file_release
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            debuggable false
+            jniDebuggable false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_21.toString()
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+        unitTests.includeAndroidResources = true
+    }
+
+//    sourceSets {
+//        androidTest {}
+//        debug {}
+//        main {
+//            java.srcDirs = ["src/main/java"]
+//            res.srcDirs = ["$rootDir/app/src/main/res"]
+//            java.srcDirs = ["$rootDir/app/src/main"]
+//            manifest.srcFile "AndroidManifest.xml"
+//            proto { srcDir "proto" }
+//        }
+//    }
+
+//    packagingOptions {
+//        exclude "META-INF/**"
+//        exclude "okhttp3/**"
+//        exclude "kotlin/**"
+//        exclude "org/**"
+//        exclude "**.properties"
+//        exclude "**.bin"
+//        exclude "kotlin-tooling-metadata.json"
+//    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+
+    implementation "androidx.appcompat:appcompat:$vAndroidxAppCompat"
+    implementation "androidx.fragment:fragment-ktx:$vAndroidxFragment"
+    implementation "androidx.constraintlayout:constraintlayout:$vAndroidxConstrainLayout"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$vAndroidxLifecycle"
+    implementation "androidx.preference:preference-ktx:$vAndroidxPreference"
+    implementation "androidx.room:room-ktx:$vAndroidxRoom"
+    ksp "androidx.room:room-compiler:$vAndroidxRoom"
+    implementation "androidx.test.espresso:espresso-idling-resource:$vAndroidxTestEspresso"
+    implementation platform("com.google.firebase:firebase-bom:$vFirebaseBom")
+    implementation "com.google.firebase:firebase-auth-ktx"
+    implementation "com.google.firebase:firebase-database-ktx"
+//    implementation "com.google.firebase:firebase-storage-ktx"
+//    implementation "com.google.firebase:firebase-messaging-ktx"
+
+    testImplementation "junit:junit:$vJunit"
+    testImplementation "org.json:json:$vOrgGson"
+    testImplementation "org.mockito:mockito-core:$vMockito"
+    testImplementation "org.mockito:mockito-inline:$vMockitoInline"
+
+    androidTestImplementation "androidx.test:rules:$vAndroidxTestRules"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$vAndroidxTestExtJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$vAndroidxTestEspresso"
+}

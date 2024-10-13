@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">KG Optometry CRM</string>
+    <string name="kg_optometry_crm">KG OPTOMETRY CRM</string>
+    <string name="log_in">LOG IN</string>
+    <string name="log_out">LOG OUT</string>
+    <string name="login_hint">Your login</string>
+    <string name="key_use_dropdown">methode_dropdown</string>
+    <string name="key_select_file_preference">select_file_preference</string>
+    <string name="goto_customers">Customers</string>
+    <string name="please_wait">Please wait …</string>
+</resources>
