@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="login_input_text">
+        <item name="android:layout_width">@dimen/login_text_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginTop">128dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:background">@drawable/login_shapes</item>
+        <item name="android:fontFamily">@font/didact_gothic</item>
+        <item name="android:padding">@dimen/padding_login_text</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/blackFont</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="primaryDark18sp">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:fontFamily">@font/didact_gothic</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

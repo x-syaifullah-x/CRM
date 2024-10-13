@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/fl_setting"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/kg_optometry_main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/didact_gothic"
+        android:text="@string/kg_optometry_crm"
+        android:textColor="@color/blueBasicLight"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/kg_optometry_logo"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/logo_height"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kg_optometry_main_text"
+        app:layout_constraintWidth_percent=".6"
+        app:srcCompat="@drawable/ic_kg_logo" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/tv_login"
+        app:layout_constraintEnd_toEndOf="@id/tv_login"
+        app:layout_constraintStart_toStartOf="@id/tv_login"
+        app:layout_constraintTop_toTopOf="@id/kg_optometry_logo"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/login_36" />
+
+    <ProgressBar
+        android:id="@+id/pb_login"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:progressBackgroundTint="@color/colorPrimaryDark"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/tv_login"
+        app:layout_constraintEnd_toEndOf="@id/tv_login"
+        app:layout_constraintStart_toStartOf="@id/tv_login"
+        app:layout_constraintTop_toTopOf="@id/kg_optometry_logo"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/didact_gothic"
+        android:text="@string/log_in"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/kg_optometry_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="kg_optometry_logo, tv_login" />
+
+    <TextView
+        android:id="@+id/hello_user_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/didact_gothic"
+        android:text="Hello, Guest! Please, log in to continue!"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrier_0" />
+
+    <EditText
+        android:id="@+id/editLoginName"
+        style="@style/login_input_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:drawableStart="@drawable/person_24"
+        android:ems="10"
+        android:hint="@string/login_hint"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="@color/lightBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello_user_text" />
+
+    <EditText
+        android:id="@+id/editPassword"
+        style="@style/login_input_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:drawableStart="@drawable/lock_24"
+        android:ems="10"
+        android:hint="Password"
+        android:importantForAutofill="no"
+        android:inputType="textVisiblePassword"
+        android:textColor="@color/lightBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editLoginName" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_message_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Change Configuration?"
+        app:layout_constraintEnd_toStartOf="@+id/tv_setting"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editPassword" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text=" Settings"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tv_message_setting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_message_setting"
+        app:layout_constraintTop_toTopOf="@id/tv_message_setting" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/blueVeryLight"
+        android:backgroundTintMode="add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_message_setting" />
+</androidx.constraintlayout.widget.ConstraintLayout>
